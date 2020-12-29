@@ -25,8 +25,9 @@ class ScalaTaxiOrdersService {
 
     rddOrders.map((s: String) => s.split(" "))
       .map((strings: Array[String]) => (strings(0), strings(2).toInt))
-      .groupByKey
-      .map(tuple => (tuple._1, tuple._2.sum))
+      .reduceByKey(_+_)
+      //.groupByKey
+      //.map(tuple => (tuple._1, tuple._2.sum))
       .join(driversIdNames)
       .map((tuple: (String, (Int, String))) => (tuple._2._1, tuple._2._2))
       .sortByKey(ascending = false)

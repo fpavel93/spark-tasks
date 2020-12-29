@@ -6,6 +6,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
 import java.util.List;
+import java.util.Map;
 
 public class MainJavaBoston {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class MainJavaBoston {
         double sum = taxiOrdersService.sumOfKmTravelToBoston(rdd);
         System.out.println("total sum of km travel to Boston: " + sum);
 
-        List<Tuple2<String, Integer>> tuple2List = taxiOrdersService.most3LongTravelDrivers(rdd, rddDrivers);
-        System.out.println("3 most driven drivers names and km\n\n" + tuple2List);
+        Map<String, Integer> map = taxiOrdersService.most3LongTravelDrivers(rdd, rddDrivers);
+        System.out.println("3 most driven drivers names and km\n\n" + map);
     }
 }
