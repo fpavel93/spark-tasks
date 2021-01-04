@@ -5,7 +5,7 @@ import org.apache.spark.SparkContext
 object MainScalaBoston {
   def main(args: Array[String]): Unit = {
 
-    val sc = new SparkContext(master = "local", appName = "boston")
+    val sc = new SparkContext(master = "local[*]", appName = "boston")
 
     val rdd = sc.textFile("src/main/resources/taxi_orders.txt")
     val rddDrivers = sc.textFile("src/main/resources/drivers.txt")
